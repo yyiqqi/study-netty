@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+	<!-- 文件输出日志 (文件大小策略进行文件输出，超过指定大小对文件备份) -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+         <File>/opt/logs/tomcat/shop/user/user-log.log</File>
+         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+              <FileNamePattern>/opt/logs/tomcat/shop/user/user-log.log.%d{yyyy-MM-dd}-%i.log</FileNamePattern> 
+              <maxFileSize>10MB</maxFileSize>
+		      <maxHistory>30</maxHistory>
+		      <totalSizeCap>2GB</totalSizeCap>
+         </rollingPolicy>
+         <encoder>
+	      <pattern>%-20(%d{HH:mm:ss.SSS} [%thread]) %-5level %logger{32} - %msg%n</pattern>
+	     </encoder>
+    </appender>
+    
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
